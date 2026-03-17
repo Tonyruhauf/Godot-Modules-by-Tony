@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://doeodqqkwcuh8"]
+
+[ext_resource type="Script" uid="uid://bdni3afulyayg" path="res://scripts/lobby.gd" id="1_4n5h8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1atq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+expand_margin_left = 30.0
+expand_margin_top = 20.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o1atq"]
+properties/0/path = NodePath(".:min_players_required")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:max_players")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:players_count")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Lobby" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 421.0
+offset_top = 208.0
+offset_right = -437.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1atq")
+script = ExtResource("1_4n5h8")
+
+[node name="ServerAdress" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -402.0
+offset_bottom = 55.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 35
+text = "Server Adress"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayersCards" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 95.0
+offset_right = 703.0
+offset_bottom = 667.0
+theme_override_constants/separation = 15
+
+[node name="LeaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 262.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 30
+text = "Quitter le Lobby"
+
+[node name="MinPlayers" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -258.0
+offset_top = 539.0
+offset_right = -8.0
+offset_bottom = 594.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "0 / x players"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Lancer la partie"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://c523s8odbst4x")
+spawn_path = NodePath("../PlayersCards")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o1atq")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -1,0 +1,19 @@
+Ceci est un système de sauvegarde que j'ai fait moi même (youpiii).
+Ce système est optimisé et dispose d'un système de backup rendant théoriquement impossible de corrompre la sauvegarde.
+
+
+-- Voici quelques instructions en englais car l'englais is very cool:
+
+Set the SaveSystem.gd as an autoload / Global script.
+
+Use SaveSystem.queue_save(key, value) to add something to the saving queue.
+The saving queue is saved to file every minute (you can change this in the script "settings" section).
+
+For important values that need to be saved immediatly, use SaveSystem.quick_save(key, value).
+It will save the value immediatly (everything in the save queue will also be saved).
+
+If you need to delete the save file, use SaveSystem.delete_savefile().
+
+NOTE: When saving resources, only exported variables are saved.
+
+--

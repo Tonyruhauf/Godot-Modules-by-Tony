@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://phdelbbn7u3h"]
+
+[ext_resource type="Script" uid="uid://ci0taj5gscgj4" path="res://modules/Drawing Module/scripts/premade_colors.gd" id="1_4en4e"]
+[ext_resource type="ColorPalette" uid="uid://b05aotrwsla51" path="res://modules/Drawing Module/resources/color palettes/premade colors/whites.tres" id="2_6i71q"]
+[ext_resource type="ColorPalette" uid="uid://75drhxaxw6sk" path="res://modules/Drawing Module/resources/color palettes/premade colors/reds.tres" id="3_y8f38"]
+[ext_resource type="ColorPalette" uid="uid://cqkmx7dgkw0ro" path="res://modules/Drawing Module/resources/color palettes/premade colors/greens.tres" id="4_mrl6t"]
+[ext_resource type="ColorPalette" uid="uid://dt1ufuw5xcvvd" path="res://modules/Drawing Module/resources/color palettes/premade colors/blues.tres" id="5_mrl6t"]
+[ext_resource type="ColorPalette" uid="uid://8g6s40a1rrpm" path="res://modules/Drawing Module/resources/color palettes/premade colors/yellow.tres" id="6_gmwqr"]
+
+[node name="PremadeColors" type="VBoxContainer"]
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_constants/separation = 15
+alignment = 1
+script = ExtResource("1_4en4e")
+colors = Array[ColorPalette]([ExtResource("2_6i71q"), ExtResource("3_y8f38"), ExtResource("4_mrl6t"), ExtResource("5_mrl6t"), ExtResource("6_gmwqr")])

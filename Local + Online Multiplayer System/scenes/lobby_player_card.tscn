@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c523s8odbst4x"]
+
+[ext_resource type="Script" path="res://scripts/lobby_player_card.gd" id="1_ppbfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8ery"]
+bg_color = Color(0.255659, 0.255659, 0.255659, 1)
+expand_margin_left = 8.0
+expand_margin_top = 7.0
+expand_margin_right = 154.0
+expand_margin_bottom = 9.0
+shadow_size = 2
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fk4n3"]
+properties/0/path = NodePath(".:player_name")
+properties/0/spawn = true
+properties/0/replication_mode = 0
+
+[node name="LobbyPlayerCard" type="Control"]
+custom_minimum_size = Vector2(0, 43)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 70.0
+script = ExtResource("1_ppbfw")
+
+[node name="PlayerName" type="Label" parent="."]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 99.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8ery")
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_fk4n3")

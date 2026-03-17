@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://6ayjrj7cuouj"]
+
+[ext_resource type="Script" uid="uid://7i4wpmrqmoka" path="res://modules/Drawing Module/scripts/layer_item.gd" id="1_kh0x0"]
+[ext_resource type="Texture2D" uid="uid://ocpuffowpjmm" path="res://modules/Drawing Module/textures/paint-brush-grayscale.png" id="1_x5bfe"]
+[ext_resource type="Texture2D" uid="uid://b0xso4xydgn83" path="res://modules/Drawing Module/textures/paint-bucket-grayscale.png" id="2_7j6id"]
+[ext_resource type="FontFile" uid="uid://cy3jpbxcb8udx" path="res://modules/Drawing Module/resources/fonts/Noto_Sans/static/NotoSans_ExtraCondensed-Regular.ttf" id="2_s5nr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtmov"]
+bg_color = Color(0.9428105, 0.9428105, 0.9428105, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j6id"]
+bg_color = Color(0.8168756, 0.8168763, 0.8168755, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5nr6"]
+bg_color = Color(0.8548633, 0.85486335, 0.8548631, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.74, 0.74, 0.74, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh0x0"]
+bg_color = Color(0.84, 0.84, 0.84, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="LayerItem" type="Panel"]
+custom_minimum_size = Vector2(171, 74)
+offset_right = 171.0
+offset_bottom = 70.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gtmov")
+script = ExtResource("1_kh0x0")
+
+[node name="MoveUpButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 17.0
+flat = true
+
+[node name="Label" type="Label" parent="MoveUpButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.48, 0.48, 0.48, 1)
+theme_override_font_sizes/font_size = 13
+text = "▲"
+
+[node name="MoveDownButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 57.0
+offset_right = 20.0
+offset_bottom = 74.0
+flat = true
+
+[node name="Label" type="Label" parent="MoveDownButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.48, 0.48, 0.48, 1)
+theme_override_font_sizes/font_size = 13
+text = "▼"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 171.0
+offset_bottom = 74.0
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s5nr6")
+text = "Layer Name"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(171, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 21
+alignment = 1
+
+[node name="LinesLayerButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_7j6id")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s5nr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kh0x0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_s5nr6")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="VBoxContainer/HBoxContainer/LinesLayerButton"]
+modulate = Color(1, 1, 1, 0.53333336)
+self_modulate = Color(1, 0.82766664, 0.53, 1)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 29.0
+offset_bottom = 29.0
+texture = ExtResource("1_x5bfe")
+expand_mode = 1
+
+[node name="FillLayerButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_7j6id")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s5nr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kh0x0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_s5nr6")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="VBoxContainer/HBoxContainer/FillLayerButton"]
+modulate = Color(1, 1, 1, 0.53333336)
+self_modulate = Color(1, 0.6583333, 0.59000003, 1)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 29.0
+offset_bottom = 29.0
+texture = ExtResource("2_7j6id")
+expand_mode = 1

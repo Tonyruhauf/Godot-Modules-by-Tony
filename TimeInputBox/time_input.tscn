@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcs8hl4rq1kll"]
+
+[ext_resource type="Script" uid="uid://bf6pfkv525f8o" path="res://scripts/time_input.gd" id="1_8vlln"]
+
+[node name="TimeInput" type="HBoxContainer"]
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_8vlln")
+
+[node name="HoursInput" type="LineEdit" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "00"
+placeholder_text = "00"
+alignment = 1
+max_length = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+select_all_on_focus = true
+caret_blink = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = ":"
+horizontal_alignment = 1
+
+[node name="MinutesInput" type="LineEdit" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "00"
+placeholder_text = "00"
+alignment = 1
+max_length = 2
+select_all_on_focus = true
+
+[connection signal="editing_toggled" from="HoursInput" to="." method="_on_hours_input_editing_toggled"]
+[connection signal="text_changed" from="HoursInput" to="." method="_on_hours_input_text_changed"]
+[connection signal="text_submitted" from="HoursInput" to="." method="_on_hours_input_text_submitted"]
+[connection signal="editing_toggled" from="MinutesInput" to="." method="_on_minutes_input_editing_toggled"]
+[connection signal="text_changed" from="MinutesInput" to="." method="_on_minutes_input_text_changed"]
+[connection signal="text_submitted" from="MinutesInput" to="." method="_on_minutes_input_text_submitted"]

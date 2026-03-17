@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d33bmttonopor"]
+
+[ext_resource type="FontFile" uid="uid://cscbde7gl0mij" path="res://modules/Drawing Module/resources/fonts/Noto_Sans/static/NotoSans-Medium.ttf" id="1_ols5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biaja"]
+bg_color = Color(0.130936, 0.150848, 0.190679, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnc4k"]
+bg_color = Color(0.203774, 0.231034, 0.285538, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x127s"]
+bg_color = Color(0.161, 0.184, 0.23, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[resource]
+default_font = ExtResource("1_ols5k")
+default_font_size = 40
+Button/styles/disabled = SubResource("StyleBoxFlat_biaja")
+Button/styles/hover = SubResource("StyleBoxFlat_vnc4k")
+Button/styles/normal = SubResource("StyleBoxFlat_x127s")
+Button/styles/pressed = SubResource("StyleBoxFlat_biaja")

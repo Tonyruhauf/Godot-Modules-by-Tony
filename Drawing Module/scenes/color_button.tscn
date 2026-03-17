@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmqow2s7bdbhl"]
+
+[ext_resource type="Script" uid="uid://ce6svdkov2esn" path="res://modules/Drawing Module/scripts/color_button.gd" id="1_rsevk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l4gq"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ColorButton" type="Panel"]
+custom_minimum_size = Vector2(30, 30)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l4gq")
+script = ExtResource("1_rsevk")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

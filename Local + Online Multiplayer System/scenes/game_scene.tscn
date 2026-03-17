@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmge32qkd7xct"]
+
+[ext_resource type="Script" uid="uid://caingrrk3fb1v" path="res://scripts/game_scene.gd" id="1_onqr8"]
+
+[sub_resource type="Environment" id="Environment_cjniw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m72el"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypdhg"]
+size = Vector3(7.24166, 1.00574, 8.87968)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t2kmw"]
+
+[node name="GameScene" type="Node"]
+script = ExtResource("1_onqr8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.48
+directional_shadow_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cjniw")
+
+[node name="Environment" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.913, 0)
+physics_material_override = SubResource("PhysicsMaterial_m72el")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0031414, 0.00286865, -0.000358582)
+shape = SubResource("BoxShape3D_ypdhg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(7.26, 0, 0, 0, 1, 0, 0, 0, 8.88, 0, 0, 0)
+mesh = SubResource("BoxMesh_t2kmw")
+
+[node name="PlayerSpawnLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35795, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://wypbvpk1xwxv")
+spawn_path = NodePath("..")
