@@ -1,7 +1,4 @@
-extends Node
-
-
-@onready var Main: Node = get_tree().get_root().get_node("Main")
+extends Node2D
 
 
 func translate_text(text: String) -> String:
@@ -63,6 +60,42 @@ func parse_argument(arg: String) -> Variant:
 		return false
 	else:
 		return arg  # fallback, might be a string without quotes
+
+
+func duplicate_array_resources(original_array: Array, duplicate_nested_resources: bool = false) -> Array:
+	var new_array = []
+	
+	for item in original_array:
+		if item is Resource:
+			if duplicate_nested_resources:
+				new_array.append(item.duplicate_deep(Resource.DEEP_DUPLICATE_ALL))
+			else:
+				new_array.append(item.duplicate(false))
+		else:
+			new_array.append(item)
+	
+	return new_array
+
+
+## Replaces all occurrences of [old_value] with [new_value] in the array.
+## Modifies the array in-place.
+func array_replace_all(arr: Array, old_value: Variant, new_value: Variant) -> void:
+	var index: int = arr.find(old_value)
+	
+	while index != -1:
+		arr[index] = new_value
+		index = arr.find(old_value, index + 1)
+
+
+## Replaces only the first occurrence of [old_value] with [new_value] in [array].
+## Returns true if a replacement was made, false otherwise.
+func array_replace_first(arr: Array, old_value: Variant, new_value: Variant) -> bool:
+	var index: int = arr.find(old_value)
+	
+	if index != -1:
+		arr[index] = new_value
+		return true
+	return false
 
 
 func area_overlaps_area_named(area_A: Area2D, area_B_name: String):
